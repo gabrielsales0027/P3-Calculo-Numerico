@@ -6,7 +6,7 @@
 Xd = [1 3 6 7 9 11 15 18];
 Yd = [2.69315 8.30259 15.6109 17.9120 22.4067 26.8040 35.4205 41.7838];
 T = [Xd' Yd'];
-x=1:.1:18;    x=[5 10.2 17.3];
+x=1:.1:18;    %x=[5 10.2 17.3];
 N= length(Xd);
 NPi =  length(x);
 
@@ -21,7 +21,7 @@ for k=1:NPi
         parc=1;
         for j=1:N
             if(i~=j)
-                parc=parc*((x(k)-T(j,1))/T(i,1)-T(j,1));
+                parc=parc*((x(k)-T(j,1))/(T(i,1)-T(j,1)));
             end
         end
         y(k)=y(k)+parc*T(i,2);
@@ -29,7 +29,7 @@ for k=1:NPi
     disp([k x(k) y(k)]);
 end
 
-disp(' '); disp('PRESSIONE UMA TECLA PARA SAIDA GRAFICA'); pause;
+disp(''); disp('PRESSIONE UMA TECLA PARA SAIDA GRAFICA'); pause;
 
 set(gcf,'Position',[1 29 800 504]);
 ax= axes; set(ax,'Fontsize',13);
