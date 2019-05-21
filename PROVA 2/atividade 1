@@ -1,0 +1,41 @@
+%IFPB 21/05/2019
+%DISCIPLINA: CALCULO NUMERICO
+%INTERPOLACAO METODO DE LAGRANGE
+%PROF PAULO HENRIQUE DA FONSECA SILVA
+
+Xd = [1 3 6 7 9 11 15 18];
+Yd = [2.69315 8.30259 15.6109 17.9120 22.4067 26.8040 35.4205 41.7838];
+T = [Xd' Yd'];
+x=1:.1:18;    x=[5 10.2 17.3];
+N= length(Xd);
+NPi =  length(x);
+
+disp('INTERPOLACAO DE LAGRANGE');
+disp(''); disp('TABELA DE PONTOS')
+for f=1:N, disp([f Xd(f) Yd(f)]); end
+disp(''); disp('TABELA DE RESULTADOS');
+
+for k=1:NPi
+    y(k)=0;
+    for i=1:N
+        parc=1;
+        for j=1:N
+            if(i~=j)
+                parc=parc*((x(k)-T(j,1))/T(i,1)-T(j,1));
+            end
+        end
+        y(k)=y(k)+parc*T(i,2);
+    end
+    disp([k x(k) y(k)]);
+end
+
+disp(' '); disp('PRESSIONE UMA TECLA PARA SAIDA GRAFICA'); pause;
+
+set(gcf,'Position',[1 29 800 504]);
+ax= axes; set(ax,'Fontsize',13);
+xlivro = [5 10.2 17.3]; ylivro=[12.0036 24.8622 34.8166];
+a=plot(Xd,Yd,'k*',x,y,'rs',xlivro,ylivro,'bd');
+set(a,'Linewidth',2);
+legend('TABELA DE PONTOS','PONTOS INTERPOLADOS','RESPOSTA LIVRO TEXTO');
+title('INTERPOLACAO DE LAGRANGE')
+xlabel('x');ylabel('y(x)');
