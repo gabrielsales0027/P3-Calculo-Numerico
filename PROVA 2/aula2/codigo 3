@@ -1,0 +1,13 @@
+
+% Segunda Regra de Simpson - Formula composta
+%Exemplo 5.7b
+
+N=9; Li=1.0; Ls=4.0; h=(Ls-Li)/N;
+x=Li:h:Ls; y=log(x.^3+sqrt(exp(x)+1)); I=0; z=0;
+disp('DIVISAO DE SUBINTERVALOS');
+for i= 1:N/2
+    A=[i+z,i+1+z,i+2+z,i+3+z]; disp(num2str(A));
+    I= I +(3*h/8)*(y(i+z)+3*y(i+1+z)+3*y(i+2+z)+y(i+3+z));
+    z=z+2;
+end
+disp(' '); disp(['A integral vale: ' num2str(I)]);
