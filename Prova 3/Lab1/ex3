@@ -1,7 +1,8 @@
 %MÉTODO DE EULER
 %APLICAÇÃO PARA ANALISE NO TEMPO DO FILTRO RC PASSA-BAIXA
+%CÁLCULO NUMÉRICO 
+%JOÃO GABRIEL SALES DE SOUZA
 
-clear all , close all,clc , help rclowpass_euler.m
 global tal;
 for N=10:5:500
     R=1E3; C=1E-6;tal=R*C; fxy='(x-y)./tal';
@@ -36,7 +37,9 @@ for N=10:5:500
     pause 
     delete(axs);
 end
+
 %%%%%%%%%%%
+
 function f=funcao(x,y,fxy)
 global tal;
 f=eval(fxy);
