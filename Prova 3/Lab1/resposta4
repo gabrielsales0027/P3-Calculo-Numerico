@@ -1,0 +1,26 @@
+
+% Exemplo de aplicação pag. 314 do livro texto
+
+A=0; B=0.008; H=0.0005; H1=H/2; %malha no tempo
+M=(B-A)/H;                      %iterações RK4
+X(1)=A; Y(1)=0; Z(1)=0;         %valores iniciais
+for J=1:M
+    x=X(J); y=Y(J); z=Z(J);
+    K1=F(x,y,z);
+    L1=G(x,y,z);
+    K2=F(x+H1,y+H1*K1,z+H1*L1);
+    L2=G(x+H1,y+H1*K1,z+H1*L1);
+    K3=F(x+H1,y+H1*K2,z+H1*L2);
+    L3=G(x+H1,y+H1*K2,z+H1*L2);
+    K4=F(x+H,y+H*K3,z+H*L3);
+    L4=G(x+H,y+H*K3,z+H*L3);
+    Y(J+1)=Y(J)+(H/6)*(K1+2*K2+2*K3+K4);
+    Z(J+1)=Z(J)+(H/6)*(L1+2*L2+2*L3+L4);
+    X(J+1)=X(J)+H;
+end
+
+[X' Y' Z']
+a= plot (X,Y,'k', X,Z,'b');
+xlabel('TEMPO')
+set(a,'LineWidth',3)
+legend('CARGA','CORRENTE', '0');
