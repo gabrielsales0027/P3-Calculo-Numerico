@@ -1,15 +1,12 @@
 % EXEMPLO 2A: SISTEMA PREDADOR PRESA / METODO DE EULER
 
 %METODO DE EULER
-%EDMILA DE MACEDO GOMES
+%João Gabriel Sales de Souza
 %DATA: 23.07.19
 %EXEMPLO DE APLICAÇÃO - SISTEMA PREDADOR X PRESA
-
 %X - TEMPO
 %Y - PRESA
-% Z - PREDADOR
-
-%clear all, close all, clc,
+%Z - PREDADOR
 
 A=0;    B=15;   H=0.1;  H1=H/2;     % MALHA NO TEMPO
 M= (B-A)/H;                         % ITERAÇÕES RK4
@@ -28,9 +25,12 @@ a=plot(Z(1),Y(1),'ro',Z,Y,'b');     set(a,'Linewidth',2);
 legend('VALOR INICIAL','PREDADOR X PRESA');
 xlabel('PREDADORES'),ylabel('PRESAS')
 
-%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+
 function R = FP(X,Y,Z)
 R = 0.25*Y-0.01*Y*Z;
+
 %%%%%%%%%%%%%%%
+
 function R = GP(X,Y,Z)
 R = -Z+0.01*Y*Z;
